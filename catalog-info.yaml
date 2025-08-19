@@ -1,0 +1,20 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: qsos-clab-gl
+  title: qsos-clab-gl
+  description: testing loki
+  annotations:
+    github.com/project-slug: bcgov/qsos-clab-gl
+    backstage.io/techdocs-ref: dir:.
+    bcgovpubcode.gov.bc.ca/ministry: WLRS
+    bcgovpubcode.gov.bc.ca/product_name: qsos-clab-gl
+    bcgovpubcode.gov.bc.ca/product_description: testing loki
+    bcgovpubcode.gov.bc.ca/product_acronym: qsosclabgl
+    bcgovpubcode.gov.bc.ca/product_owner: Om
+    bcgovpubcode.gov.bc.ca/hosting_platform: OpenShift private cloud
+    backstage.io/source-template: template:default/quickstart-openshift
+spec:
+  type: other
+  lifecycle: experimental
+  owner: group:default/iit-arch
