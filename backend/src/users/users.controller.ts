@@ -26,7 +26,7 @@ export class UsersController {
       const user = await this.usersService.create(createUserDto);
       return user;
     } catch (error) {
-      console.error(error);
+      console.error("Error", error);
 
       // Do not leak internal error details to clients
       throw new InternalServerErrorException('Internal server error');
