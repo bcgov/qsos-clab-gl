@@ -26,12 +26,7 @@ export class UsersController {
       const user = await this.usersService.create(createUserDto);
       return user;
     } catch (error) {
-      // Log full stack if available, fallback to stringified error
-      this.logger.error(
-        'Exception | Failed to create user',
-        error?.stack ?? String(error),
-        UsersController.name,
-      );
+      console.error(error);
 
       // Do not leak internal error details to clients
       throw new InternalServerErrorException('Internal server error');
