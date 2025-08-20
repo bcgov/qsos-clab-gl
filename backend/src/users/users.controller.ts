@@ -5,7 +5,7 @@ import {
   Body,
   Put,
   Param,
-  Delete, Query, HttpException,
+  Delete, Query, HttpException, InternalServerErrorException,Logger
 } from "@nestjs/common";
 import {ApiTags} from "@nestjs/swagger";
 import {UsersService} from "./users.service";
@@ -16,12 +16,21 @@ import { UserDto } from "./dto/user.dto";
 @ApiTags("users")
 @Controller({path: "users", version: "1"})
 export class UsersController {
+  private readonly logger = new Logger(UsersController.name);
   constructor(private readonly usersService: UsersService) {
   }
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  async create(@Body() createUserDto: CreateUserDto) {
+    try {
+      const user = await this.usersService.create(createUserDto);
+      return user;
+    } catch (error) {
+      console.error("Error", error);
+
+      // Do not leak internal error details to clients
+      throw new InternalServerErrorException('Internal server error');
+    }
   }
 
   @Get()
