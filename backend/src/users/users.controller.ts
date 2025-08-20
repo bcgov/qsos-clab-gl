@@ -5,7 +5,7 @@ import {
   Body,
   Put,
   Param,
-  Delete, Query, HttpException, InternalServerErrorException
+  Delete, Query, HttpException, InternalServerErrorException,Logger
 } from "@nestjs/common";
 import {ApiTags} from "@nestjs/swagger";
 import {UsersService} from "./users.service";
